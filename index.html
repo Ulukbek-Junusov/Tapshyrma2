@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Инстаграм офферлер — карточкалар менен (мобилдик)</title>
+  <style>
+    :root{
+      --bg:#0f172a; /* slate-900 */
+      --panel:#111827; /* gray-900 */
+      --card:#0b1222; /* custom dark */
+      --muted:#94a3b8; /* slate-400 */
+      --text:#e5e7eb; /* gray-200 */
+      --accent:#22d3ee; /* cyan-400 */
+      --accent-2:#a78bfa; /* violet-400 */
+      --ring:#334155; /* slate-700 */
+      --ok:#10b981;
+      --warn:#f59e0b;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -20%, #1e293b, transparent),
+                  radial-gradient(1200px 800px at 120% 20%, #0b1222, transparent),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    .container{max-width:1024px; margin:0 auto; padding:16px;}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(8px);
+      background: rgba(15,23,42,.7);
+      border-bottom:1px solid var(--ring);
+    }
+    .brand{display:flex; align-items:center; gap:10px; padding:12px 16px;}
+    .logo{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow:0 6px 18px rgba(34,211,238,.35)}
+    .brand h1{font-size:16px; margin:0; letter-spacing:.2px}
+
+    .pillbar{display:flex; gap:8px; padding:8px 16px 12px; flex-wrap:wrap}
+    .pill{appearance:none; border:1px solid var(--ring); color:var(--text); background:transparent; padding:8px 12px; border-radius:999px; cursor:pointer; font-size:14px}
+    .pill.active{background:linear-gradient(135deg, rgba(34,211,238,.15), rgba(167,139,250,.15)); border-color:var(--accent)}
+
+    .section{padding:18px 0}
+    .section h2{margin:8px 4px 12px; font-size:18px; font-weight:700}
+    .grid{display:grid; grid-template-columns:1fr; gap:12px}
+    @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:960px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+      border:1px solid var(--ring);
+      border-radius:16px; padding:14px; box-shadow: var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    .card::before{content:""; position:absolute; inset:0; pointer-events:none; background: radial-gradient(500px 200px at -20% -20%, rgba(34,211,238,.08), transparent), radial-gradient(400px 180px at 120% 0%, rgba(167,139,250,.08), transparent)}
+    .kicker{font-size:12px; color:var(--muted); letter-spacing:.4px; text-transform:uppercase}
+    .title{font-weight:700; margin:6px 0 8px; font-size:16px}
+    .text{font-size:14px; color:#dbeafe}
+
+    .row{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:12px}
+    .copy{border:1px solid var(--ring); background:rgba(148,163,184,.08); color:var(--text); padding:8px 10px; border-radius:10px; font-size:13px; cursor:pointer}
+    .copy:active{transform:scale(.98)}
+    .small{font-size:12px; color:var(--muted)}
+
+    .toast{position:fixed; left:50%; transform:translateX(-50%); bottom:20px; background:#0b1222; border:1px solid var(--ring); padding:10px 14px; border-radius:12px; box-shadow:var(--shadow); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s}
+    .toast.show{opacity:1; transform:translateX(-50%) translateY(-4px)}
+
+    .footer{padding:24px 0 40px; text-align:center; color:var(--muted); font-size:13px}
+    a{color:var(--accent)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand container">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Инстаграм офферлер — карточкалар менен</h1>
+    </div>
+    <div class="pillbar container">
+      <button class="pill active" data-target="prod">Продюсерлер</button>
+      <button class="pill" data-target="experts">Эксперттер</button>
+      <button class="pill" data-target="sales">Сатуу менеджер кызматтары</button>
+      <button class="pill" data-target="goods">Товардык бизнес</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Продюсерлер -->
+    <section id="prod" class="section">
+      <h2>Продюсерлер үчүн офферлер</h2>
+      <div class="grid">
+        <!-- 1 -->
+        <article class="card"><div class="kicker">Оффер 1</div><div class="title">Курсту 7 күндө күйгүзөбүз</div><div class="text">Онлайн-курсуңузду жарнамалап жатасыз, бирок сатуу азбы? Биздин продюсердик команда сиз үчүн воронка түзүп, кардарларды алып келип, биринчи 7 күндүн ичинде студенттерди чогулта баштайт. ДМге жазыңыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#продюсерлик</span></div></article>
+        <!-- 2 -->
+        <article class="card"><div class="kicker">Оффер 2</div><div class="title">Аудиторияны өстүрүү + сатуу</div><div class="text">Сиз экспертсиз, бирок аудитория азбы? Контент, реклама жана сатуу системасын бириктирип, билим берүү продуктуңузду рынокко чыгарып беребиз. Биринчи айда туруктуу сатууга чыгарабыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#аудитория</span></div></article>
+        <!-- 3 -->
+        <article class="card"><div class="kicker">Оффер 3</div><div class="title">Сатуу процессин толук колго алабыз</div><div class="text">Продюсерсиз курсуңуз жай жүрүп жататпы? Биз өнөктөш болуп, сатуу процессин толугу менен мойнубузга алабыз: воронка, контент, реклама, аналитика. Сиз — сабакта, биз — сатууда.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#воронка</span></div></article>
+        <!-- 4 -->
+        <article class="card"><div class="kicker">Оффер 4</div><div class="title">Текшерилген трафик, реалдуу студент</div><div class="text">Натыйжа бербеген рекламага акча коротуп жатасызбы? Биз текшерилген ыкмалар менен студент алып келебиз. Күндүк бюджетти оптималдап, сатууга айланган лиддерге иштейбиз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#реклама</span></div></article>
+        <!-- 5 -->
+        <article class="card"><div class="kicker">Оффер 5</div><div class="title">Эксперт окутат, биз сатабыз</div><div class="text">Эксперттик билимиңиз бар, бирок сатканга убакыт жокпу? Маркетинг жана сатуу бөлүгүн биз аткарабыз. Календарды толтуруп, сабактарыңызды пландап беребиз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#өнөктөш</span></div></article>
+        <!-- 6 -->
+        <article class="card"><div class="kicker">Оффер 6</div><div class="title">Нөлдөн таанытууга чейин</div><div class="text">Курсуңузду баштап, бирок эч ким билбей жатабы? Биз аудитория чогултуп, таанытууга жардам беребиз. Алгачкы вебинарды уюштуруп, катышуучуну өзүбүз топтойбуз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#вебинар</span></div></article>
+        <!-- 7 -->
+        <article class="card"><div class="kicker">Оффер 7</div><div class="title">30 күндө биринчи топ</div><div class="text">30 күн ичинде 0дон баштап курсуңузга биринчи топту чогултабыз. Лид-магнит, автоворонка жана сатуу чат-скрипттери даяр болот. Жазылыңыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#1ай</span></div></article>
+        <!-- 8 -->
+        <article class="card"><div class="kicker">Оффер 8</div><div class="title">Ролдорду туура бөлүштүрүү</div><div class="text">Эксперт — билим берет, продюсер — сатат. Сиз биринчи ролду аткарыңыз, экинчисин бизге тапшырыңыз. Убактыңыз үнөмдөлөт, кирешеңиз өсөт.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#таймменеджмент</span></div></article>
+        <!-- 9 -->
+        <article class="card"><div class="kicker">Оффер 9</div><div class="title">Кардарды биз таап келебиз</div><div class="text">Кардар таап берүү — биздин милдет. Вы в эфире — мы в продажах. Жандуу эфир, чыгармачылыкка көңүл буруңуз, сатуу бизде.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#лидоген</span></div></article>
+        <!-- 10 -->
+        <article class="card"><div class="kicker">Оффер 10</div><div class="title">Маркетингди толугу менен алып кетебиз</div><div class="text">Сиз курска көңүл бурасыз, биз маркетингди аткарабыз: стратегия, контент-план, таргет, отчет. Биринчи 14 күндө көрүнөрлүк өсүш.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#стратегия</span></div></article>
+        <!-- 11 -->
+        <article class="card"><div class="kicker">Оффер 11</div><div class="title">100гө чейин студент</div><div class="text">Биздин команда курсуңузга 100гө чейин студент алып келе алат. Капкасты туура эсептеп, бааны позициялап, ROI көзөмөлдөйбүз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#масштаб</span></div></article>
+        <!-- 12 -->
+        <article class="card"><div class="kicker">Оффер 12</div><div class="title">Билим → системалуу пайда</div><div class="text">Сиздин билимиңизди системалуу пайдага айлантуу үчүн продюсердик колдоо көрсөтөбүз. Жарнамадан сатууларга чейинки бүт цикл бизде.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#пайда</span></div></article>
+        <!-- 13 -->
+        <article class="card"><div class="kicker">Оффер 13</div><div class="title">Жаңы курс үчүн толук план</div><div class="text">Жаңы курсту баштоону пландап жатасызбы? Биз толук план жана стратегия сунуштайбыз: позициялоо, программа, баа, старт-ичара, сатуу каналдары.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#план</span></div></article>
+        <!-- 14 -->
+        <article class="card"><div class="kicker">Оффер 14</div><div class="title">Энергияны үнөмдөңүз</div><div class="text">Продюсерсиз эксперт иштейт, бирок бат чарчайт. Биз сизге энергия жана убакыт үнөмдөп беребиз: контентти пландап, техникаларын биз бүтүрөбүз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#энергия</span></div></article>
+        <!-- 15 -->
+        <article class="card"><div class="kicker">Оффер 15</div><div class="title">Рынокко туура чыгаруу</div><div class="text">Курсуңузду рынокко туура чыгаруу үчүн команда керек. Биз ошол команда: аналитика, тест, оптимизация, масштабдоо. Байланышыңыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#рынок</span></div></article>
+      </div>
+    </section>
+
+    <!-- Эксперттер -->
+    <section id="experts" class="section" hidden>
+      <h2>Эксперттер үчүн офферлер (психолог, гинеколог, коуч)</h2>
+      <div class="grid">
+        <!-- 1 -->
+        <article class="card"><div class="kicker">Оффер 1</div><div class="title">50% алгачкы консультация</div><div class="text">Сизди көптөн бери түйшөлткөн маселе барбы? Алгачкы консультацияны 50% арзандатуу менен алыңыз да, чечимдин жолдорун биргеликте табалы. Жазыңыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#первыйсеанс</span></div></article>
+        <!-- 2 -->
+        <article class="card"><div class="kicker">Оффер 2</div><div class="title">30 мүнөт диагностика</div><div class="text">Психолог менен 30 мүнөт сүйлөшүп, жашооңуздагы негизги тоскоолдукту аныктаңыз. Диагноз эмес — багыт. Онлайн форматта, ыңгайлуу убакта.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#диагностика</span></div></article>
+        <!-- 3 -->
+        <article class="card"><div class="kicker">Оффер 3</div><div class="title">Онлайн гинеколог</div><div class="text">Гинеколог консультациясы эми онлайн: кезек күтүүсүз, жашыруун, ыңгайлуу. Суроолоруңузга тийиштүү жооп жана андан аркы аракет планы.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#онлайндаргер</span></div></article>
+        <!-- 4 -->
+        <article class="card"><div class="kicker">Оффер 4</div><div class="title">Стресстен жеңилдетүү</div><div class="text">Стресстен чыга албай жатасызбы? Бир гана сеанста өзүңүздү жеңилирээк сезүү үчүн жөнөкөй, иштей турган көндүмдөрдү беребиз. Бүгүн жазылыңыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#стресс</span></div></article>
+        <!-- 5 -->
+        <article class="card"><div class="kicker">Оффер 5</div><div class="title">Балдар психологу</div><div class="text">Балдарыңыздын жүрүм-турумунда көйгөй барбы? Себебин биргеликте таап, үй шартында колдонулуучу план түзөбүз. Ата-эне үчүн түшүнүктүү тилде.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#балдар</span></div></article>
+        <!-- 6 -->
+        <article class="card"><div class="kicker">Оффер 6</div><div class="title">Эмоцияны башкаруу</div><div class="text">Эмоцияларды башкарууну үйрөнгүңүз келеби? Коучинг программа керектүү көндүмдөрдү берет: дем алуу, чек коюу, приоритет. Натыйжа — 7 күндө сезилет.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#коучинг</span></div></article>
+        <!-- 7 -->
+        <article class="card"><div class="kicker">Оффер 7</div><div class="title">Жалгыз эмессиз</div><div class="text">Сиз өзүңүздү жалгыз сезесизби? Психолог менен сүйлөшүү жеңилдик тартуулайт. Коопсуз, жашыруун, колдоо бар. Биринчи сүйлөшүүдө эле жеңилдейсиз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#колдоо</span></div></article>
+        <!-- 8 -->
+        <article class="card"><div class="kicker">Оффер 8</div><div class="title">Ыңгайлуу убакыт, онлайн</div><div class="text">Дарыгерге барууга убакыт таппай жатасызбы? Онлайн гинеколог сизге ыңгайлуу убакытта жардам берет. Медициналык купуялуулук сакталат.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#жашыруун</span></div></article>
+        <!-- 9 -->
+        <article class="card"><div class="kicker">Оффер 9</div><div class="title">Чоң чечимдерге так багыт</div><div class="text">Өмүрүңүздө чоң чечимдерди кабыл ала албай жатасызбы? Коуч сизге так багыт көрсөтөт: максат, план, жоопкерчилик. Бирге алдыга жылалы.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#максат</span></div></article>
+        <!-- 10 -->
+        <article class="card"><div class="kicker">Оффер 10</div><div class="title">Биринчи консультациядан кийин жеңилдик</div><div class="text">Биринчи консультациядан кийин өзүңүздү жеңил сезип, жашоого болгон көз карашыңыз өзгөрөт. Жеке план аласыз жана аны кантип аткарууңузду билесиз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#жекеПлан</span></div></article>
+        <!-- 11 -->
+        <article class="card"><div class="kicker">Оффер 11</div><div class="title">Төрөттөн кийинки колдоо</div><div class="text">Төрөттөн кийинки кыйынчылыктар менен жалгыз калбаңыз — адис жардам берет. Организмдеги өзгөрүүлөрдү түшүндүрүп, туура реабилитация планын түзөбүз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#түйүлдүк</span></div></article>
+        <!-- 12 -->
+        <article class="card"><div class="kicker">Оффер 12</div><div class="title">Жубайлар терапиясы</div><div class="text">Жубайлар үчүн консультация — мамилени сактап калууга жардам берет. Угууну, сүйлөөнү жана конфликтти туура чечүүнү практикалайбыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#мамиле</span></div></article>
+        <!-- 13 -->
+        <article class="card"><div class="kicker">Оффер 13</div><div class="title">Стресс/уйкусуздук боюнча программа</div><div class="text">Күндөлүк стресс жана уйкусуздук көйгөйү барбы? Туура тартип, рацион, көнүгүү жана ойлорду башкаруу боюнча иштейбиз. Натыйжа — жумадан баштап.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#уйку</span></div></article>
+        <!-- 14 -->
+        <article class="card"><div class="kicker">Оффер 14</div><div class="title">Жеке программа</div><div class="text">Ар бир адамга ылайыкташкан жеке программа түзөбүз. Максатыңызга жараша жүктөм, график жана колдоо деңгээли тандалат. Онлайн коштоп барабыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#индивидуалдуу</span></div></article>
+        <!-- 15 -->
+        <article class="card"><div class="kicker">Оффер 15</div><div class="title">Жардам алуу — туура чечим</div><div class="text">Жардам алуу — алсыздык эмес, тескерисинче туура чечим. Сезимдерди түшүнүп, жашоону жеңилдетүүгө багыт алабыз. Байланышыңыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#жардам</span></div></article>
+      </div>
+    </section>
+
+    <!-- Сатуу менеджер кызматтары -->
+    <section id="sales" class="section" hidden>
+      <h2>Сатуу менеджер кызматын саткандар үчүн офферлер</h2>
+      <div class="grid">
+        <!-- 1 -->
+        <article class="card"><div class="kicker">Оффер 1</div><div class="title">Сатууну биз жаап беребиз</div><div class="text">Сатуудан чарчап жатасызбы? Биздин менеджерлер сиздин ордуңузга сүйлөшүп, заказды жаап берет. Скрипттер, CRM жана отчеттуулук — пакетте.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#аутсорс</span></div></article>
+        <!-- 2 -->
+        <article class="card"><div class="kicker">Оффер 2</div><div class="title">Биринчи жумада ROI</div><div class="text">Биринчи жумада эле менеджер кызматынан түшкөн пайда чыгымдан ашып түшөт. KPI менен иштейбиз, жыйынтык көрүнүктүү болот.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#ROI</span></div></article>
+        <!-- 3 -->
+        <article class="card"><div class="kicker">Оффер 3</div><div class="title">Кардарга жооп — 1 мүнөт</div><div class="text">Кардарларга жооп бербей калган учур болбосун десеңиз, биздин командага таяныңыз. Жооп берүү убактысы 1 мүнөттөн ашпайт — конверсия өсөт.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#SLA</span></div></article>
+        <!-- 4 -->
+        <article class="card"><div class="kicker">Оффер 4</div><div class="title">Күнүнө 20–30 диалог</div><div class="text">Менеджерлер күнүнө 20–30 диалог жүргүзүп, сатууга айлантат. Сопрос, квалификация, оффер, жабуу — баары скрипт боюнча.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#скрипт</span></div></article>
+        <!-- 5 -->
+        <article class="card"><div class="kicker">Оффер 5</div><div class="title">Сиз өндүрөсүз — биз сатабыз</div><div class="text">Сиз өндүрөсүз, биз сатабыз. Убакыт үнөмдөлөт, киреше көбөйөт. Чакыруу → сүйлөшүү → инвойс — так процесс иштейт.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#процесс</span></div></article>
+        <!-- 6 -->
+        <article class="card"><div class="kicker">Оффер 6</div><div class="title">CRM + тажрыйба = өсүш</div><div class="text">CRM системасы + тажрыйбалуу менеджер = заказдын өсүшү. Миссед чаттар болбойт, аналитика реал-таймда көрүнөт. Ай сайын отчет беребиз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#CRM</span></div></article>
+        <!-- 7 -->
+        <article class="card"><div class="kicker">Оффер 7</div><div class="title">Орточо өсүш 40%</div><div class="text">Биздин команда менен иштеген компаниялардын сатуусу орточо 40% көтөрүлдү. Сиздин нишага ылайык скрипт жана офферлерди тез ылайыкташтырабыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#өсүш</span></div></article>
+        <!-- 8 -->
+        <article class="card"><div class="kicker">Оффер 8</div><div class="title">Success fee форматы</div><div class="text">Сатуу жокпу? Биз жапкан заказдардан гана акы алабыз. Риск төмөн, мотивация жогору — экөө тең сиздин пайдага иштейт.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#successFee</span></div></article>
+        <!-- 9 -->
+        <article class="card"><div class="kicker">Оффер 9</div><div class="title">Диалогду сатууга айлантабыз</div><div class="text">Кардар менен сүйлөшүүнү биз аткарабыз, сиз кирешени эсептейсиз. Кайра байланыш, ысык/муздак лиддер үчүн өзүнчө сценарийлер бар.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#конверсия</span></div></article>
+        <!-- 10 -->
+        <article class="card"><div class="kicker">Оффер 10</div><div class="title">Заказ артынан куубайсыз</div><div class="text">Жаңы заказдарды артынан кууп убара болбоңуз — аларды биз жабабыз. Сатуудан бошогон убактыңызды продуктту жакшыртууга жумшаңыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#фокус</span></div></article>
+        <!-- 11 -->
+        <article class="card"><div class="kicker">Оффер 11</div><div class="title">Тез жооп — жогорку конверсия</div><div class="text">Биз менен иштесеңиз, ар бир кардарга 1 мүнөт ичинде жооп берилет. Тез реакция — сатууга айлануу ыктымалдыгын 2–3 эсе көбөйтөт.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#жооп</span></div></article>
+        <!-- 12 -->
+        <article class="card"><div class="kicker">Оффер 12</div><div class="title">Ар бир диалог — мүмкүнчүлүк</div><div class="text">Менеджерлер ар бир диалогду сатууга айландырууга аракет кылат. Upsell, cross-sell, кошумча кепилдик — орточо чек өсөт.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#upsell</span></div></article>
+        <!-- 13 -->
+        <article class="card"><div class="kicker">Оффер 13</div><div class="title">Тунук процесс</div><div class="text">Чакыруу → сүйлөшүү → сатуу — биздин алгоритм. Күн сайын кыска отчет, жума сайын анализ. Сиз бардык сандарды көрөсүз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#алгоритм</span></div></article>
+        <!-- 14 -->
+        <article class="card"><div class="kicker">Оффер 14</div><div class="title">Инвестиция, чыгым эмес</div><div class="text">Биздин кызмат чыгым эмес, инвестиция. Команда өзү киреше алып келет: KPI жана бонус системасы бизде түзүлгөн.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#инвестиция</span></div></article>
+        <!-- 15 -->
+        <article class="card"><div class="kicker">Оффер 15</div><div class="title">Көбөйгөн заказдарга даяр туруңуз</div><div class="text">Көбөйгөн заказдарга даяр болуңуз — биз аны камсыз кылабыз. Кийинки этап: логистика, колдоо жана кайра сатуу тизмегин бирге курабыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#масштабдоо</span></div></article>
+      </div>
+    </section>
+
+    <!-- Товардык бизнес -->
+    <section id="goods" class="section" hidden>
+      <h2>Товардык бизнес үчүн офферлер (арзан, массалык)</h2>
+      <div class="grid">
+        <!-- 1 -->
+        <article class="card"><div class="kicker">Оффер 1</div><div class="title">Чехолдор 199 сомдон</div><div class="text">Телефон чехолдорубуз болгону 199 сомдон башталат. Бишкек ичинде жеткирүү эртең эле! Моделди жазыңыз — варианттарды жөнөтөбүз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#чехол</span></div></article>
+        <!-- 2 -->
+        <article class="card"><div class="kicker">Оффер 2</div><div class="title">Поп-ит 3+1 белек</div><div class="text">Поп-ит оюнчуктар — балдарга кубаныч тартуулайт. 3 даанага буйрутма берсеңиз, 1өө белекке! Түс/форма тандоо бар.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#попит</span></div></article>
+        <!-- 3 -->
+        <article class="card"><div class="kicker">Оффер 3</div><div class="title">Косметика тестерлери</div><div class="text">Косметика тестерлери — болгону 150 сомдон. Оригиналга 95% окшош жыт, чакан формат. Бир нече жытты сынап көрүңүз, анан чоңун алыңыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#тестер</span></div></article>
+        <!-- 4 -->
+        <article class="card"><div class="kicker">Оффер 4</div><div class="title">Спорт футболка 350 сом</div><div class="text">Спорттук футболкалар — 350 сомдон. Жеңил, ыңгайлуу, күнүмдүк кийүүгө ылайык. Өлчөмдөр бар, алмаштыруу мүмкүн.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#кимишек</span></div></article>
+        <!-- 5 -->
+        <article class="card"><div class="kicker">Оффер 5</div><div class="title">Бижутерияга арзандатуу</div><div class="text">Арзан баадагы бижутерия: 2 буюмга буйрутма берсеңиз, арзандатуу ала аласыз. Гипоаллерген варианттар бар. Сүрөтүн жиберебиз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#бижутерия</span></div></article>
+        <!-- 6 -->
+        <article class="card"><div class="kicker">Оффер 6</div><div class="title">Зымсыз наушник 499 сом</div><div class="text">Зымсыз наушник болгону 499 сом. Узак заряд, таза үн, гарнитура функциясы. 3 ай кепилдик. Шаар ичинде тез жеткиребиз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#наушник</span></div></article>
+        <!-- 7 -->
+        <article class="card"><div class="kicker">Оффер 7</div><div class="title">Лампочка-гирлянда</div><div class="text">Лампочка-гирлянда — 390 сомдон. Үйүңүздү кооздоп, жылуу атмосфера түзөт. Узундуктар ар түрдүү, кеңеш беребиз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#гирлянда</span></div></article>
+        <!-- 8 -->
+        <article class="card"><div class="kicker">Оффер 8</div><div class="title">Органайзер 249 сом</div><div class="text">Органайзерлер — 249 сомдон. Үйүңүздөгү башаламандыкты оңой чечесиз. Үлгүлөрүн көрүү үчүн «каталог» деп жазыңыз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#органайзер</span></div></article>
+        <!-- 9 -->
+        <article class="card"><div class="kicker">Оффер 9</div><div class="title">Ашкана гаджеттери</div><div class="text">Ашкана үчүн майда-түйөк гаджеттер — 199 сомдон башталат. Пилинг-пилкер, чапкыч, бөлгүч — күнүмдүк жашоону жеңилдетет.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#ашкана</span></div></article>
+        <!-- 10 -->
+        <article class="card"><div class="kicker">Оффер 10</div><div class="title">Косметикалык сумочка</div><div class="text">Косметикалык сумочка — 299 сомдон. Ар дайым тартип жана ыңгайлуулук. Сууга туруктуу материал, фермуер сапаттуу.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#сумочка</span></div></article>
+        <!-- 11 -->
+        <article class="card"><div class="kicker">Оффер 11</div><div class="title">Балдар оюнчуктары</div><div class="text">Балдар оюнчуктары болгону 199 сомдон. Коопсуз материалдар, жаш курагына жараша сунуштайбыз. Сүрөт/видео берилет.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#оюнчук</span></div></article>
+        <!-- 12 -->
+        <article class="card"><div class="kicker">Оффер 12</div><div class="title">Powerbank 590 сом</div><div class="text">Powerbank — 590 сомдон. Телефонуңуз ар дайым заряддуу. Көлөм/мАч варианттары бар. Кепилдик 1 ай.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#powerbank</span></div></article>
+        <!-- 13 -->
+        <article class="card"><div class="kicker">Оффер 13</div><div class="title">Bluetooth колонка</div><div class="text">Bluetooth колонка — 799 сомдон. Үнү күчтүү, көлөмү кичине. Outdoor үчүн да ылайыктуу. Тест видеосун жиберебиз.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#колонка</span></div></article>
+        <!-- 14 -->
+        <article class="card"><div class="kicker">Оффер 14</div><div class="title">Socks 3 жуп 150 сом</div><div class="text">Socks — 3 жупка 150 сом. Жумшак, дем алган материал. Өлчөм жана түстөр бар. Жеткирүү тез.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#носкалар</span></div></article>
+        <!-- 15 -->
+        <article class="card"><div class="kicker">Оффер 15</div><div class="title">Кружка 199 сом</div><div class="text">Кружкалар — 199 сомдон. Уникалдуу дизайн, белекке ылайыктуу. Кутуга салуу кызматы бар. Заказ үчүн WhatsApp/DM.</div><div class="row"><button class="copy">Көчүрүү</button><span class="small">#кружка</span></div></article>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Текст көчүрүлдү ✅</div>
+
+  <footer class="footer container">
+    <div>© 2025. Офферлер тизмеси. Мобилдик үчүн оптималдаштырылган бир баракча.</div>
+  </footer>
+
+  <script>
+    // Tab (pill) switcher
+    const pills = document.querySelectorAll('.pill');
+    const sections = {
+      prod: document.getElementById('prod'),
+      experts: document.getElementById('experts'),
+      sales: document.getElementById('sales'),
+      goods: document.getElementById('goods'),
+    };
+    pills.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const t = btn.dataset.target;
+        Object.values(sections).forEach(s=> s.hidden = true);
+        sections[t].hidden = false;
+        pills.forEach(p=>p.classList.remove('active'));
+        btn.classList.add('active');
+        // scroll to top of main after switch
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+    });
+
+    // Copy buttons
+    const toast = document.getElementById('toast');
+    function showToast(){
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 1400);
+    }
+    document.querySelectorAll('.card .copy').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const text = btn.closest('.card').querySelector('.text').innerText.trim();
+        try{
+          await navigator.clipboard.writeText(text);
+          showToast();
+        }catch(err){
+          // Fallback copy
+          const ta = document.createElement('textarea');
+          ta.value = text; document.body.appendChild(ta); ta.select();
+          document.execCommand('copy');
+          ta.remove(); showToast();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
